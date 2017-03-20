@@ -4,6 +4,7 @@ package engine.agents;
 import engine.reports.IReport;
 import ui.configuration.Configurator;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -23,7 +24,7 @@ public interface IAgent {
      * begin.
      * @return An IReport containing the agent's findings
      */
-    IReport go();
+    Collection<IReport> go();
 
     /**
      * Most of the time, an agent will require configuration. Configuration is done by the user via the UI.
@@ -35,8 +36,10 @@ public interface IAgent {
     /**
      * The instance of the class will be built by calling this method. The keys of the map are the fields specified
      * in the Configurator, the values are the values set by the user in the UI.
-     * @param configurations
+     * @param lastReport The report from the last successful run, if first run, is null
+     * @param configurations The configurations set by the user in the UI
+     * @return A configured instance of the agent
      */
-    void build(Map<String, String> configurations);
+    IAgent build(IReport lastReport, Map<String, String> configurations);
 
 }

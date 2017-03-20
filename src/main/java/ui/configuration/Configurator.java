@@ -68,7 +68,7 @@ public class Configurator {
             return new Configurator(sb.toString());
         }
 
-        static class ConfigurationBuilderException extends Exception {
+        public static class ConfigurationBuilderException extends Exception {
             ConfigurationBuilderException(String message) {
                 super(message);
             }
